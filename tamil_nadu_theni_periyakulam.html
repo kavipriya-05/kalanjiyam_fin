@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THENI</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("https://th.bing.com/th/id/OIP.90idZSC32gavovgZZqeFDQAAAA?rs=1&pid=ImgDetMain");
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+           
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            
+            background: transparent;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 20px;
+        }
+        .sidebar button {
+            background: #d3d3d3;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .content {
+            flex: 1;
+        }
+        .content h2 {
+            text-align: center;
+            background: #d3d3d3;
+            padding: 10px;
+            font-weight: bold;
+        }
+        .image-placeholder {
+            width: 100%;
+            height: 150px;
+            background: #d3d3d3;
+            margin: 10px 0;
+        }
+        .dropdown-container {
+            margin-top: 20px;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            border-radius: 5px;
+            border: 2px solid #f2e9e9;
+            background-color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .write-post-btn {
+            margin-top: 15px;
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .write-post-btn:hover {
+            background-color: darkblue;
+        }
+        .write-post-btn:before {
+            content: '✏️';
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <a href="food.html"><button>Food</button></a> 
+            <a href="arts.html"><button>ARTS AND CULTURE</button></a> 
+          
+            <a href="culture.html"><button>LANGUAGE</button></a>
+        </aside>
+        <main class="content">
+            <h2>GLIMPSES OF THENI</h2>
+           
+            <div class="image-placeholder">
+               
+            </div>
+
+            <!-- Write a Post Button -->
+            <a href="post.html">
+            <button class="write-post-btn">Write a Post</button>
+           </a>     
+        </main>
+        
+    <script>
+        const blogDisplay= document.querySelector('.image-placeholder');
+        const blogList=fetch('http://localhost:3000/blogs')
+        .then(response => response.json()) // Convert response to JSON
+        .then(data => {
+            blogDisplay.innerHTML = data.map(blog => `
+                <div class="blog-post">
+                    <h3>${blog.title}</h3>
+                    <p>${blog.content}</p>
+                    
+                </div>
+            `).join('');
+        }) // Log the actual data
+        .catch(error => console.error('Error fetching blogs:', error));
+        
+       </script>
+
+   
+</body>
+</html>

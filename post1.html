@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffd580;
+            color: #333;
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #444;
+        }
+        textarea, input, select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 12px 20px;
+            background: orange;
+            color: black;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            display: block;
+            width: 100%;
+        }
+        button:hover {
+            background: orange;
+        }
+        #preview img {
+            max-width: 100%;
+            margin-top: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .post {
+            background: white;
+            border-radius: 50px;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .post h3 {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <h2>ADD TO KUDUVAI</h2>
+    <input type="text" id="title" placeholder="Title" required>
+    <select id="domain" required>
+        <option value="">Select a domain</option>
+        <option value="Art and Literature">Art and Literature</option>
+        <option value="Languages">Languages</option>
+        <option value="Culinary">Culinary</option>
+        <option value="Art Forms">Art Forms</option>
+    </select> 
+    <textarea id="content" placeholder="Carve thoughts into words..." required></textarea>
+    <input type="file" id="image" accept="image/*">
+    <div id="preview"></div>
+    <button onclick="postBlog()">Post</button>
+
+    <h2>Recent Kuduvais</h2>
+    <div id="posts"></div>
+
+    <script>
+        document.getElementById("image").addEventListener("change", function(event) {
+            let preview = document.getElementById("preview");
+            preview.innerHTML = "";
+            let file = event.target.files[0];
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    let img = document.createElement("img");
+                    img.src = e.target.result;
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        async function postBlog() {
+            let title = document.getElementById("title").value;
+            let domain = document.getElementById("domain").value;
+            let content = document.getElementById("content").value;
+            let imageInput = document.getElementById("image").files[0];
+
+            if (!title || !content || !domain) {
+                alert("Title, domain, and content are required!");
+                return;
+            }
+
+            let formData = new FormData();
+            formData.append("title", title);
+            formData.append("domain", domain);
+            formData.append("content", content);
+            if (imageInput) {
+                formData.append("image", imageInput);
+            }
+
+            try {
+                let response = await fetch("http://localhost:3000/blog", { 
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+                    let result = await response.json();
+                    alert("Blog posted successfully!");
+
+                    let postDiv = document.createElement("div");
+                    postDiv.className = "post";
+                    postDiv.innerHTML = `<h3>${title}</h3><h4>Domain: ${domain}</h4><p>${content}</p>`;
+                    
+                    if (result.imageUrl) {
+                        let img = document.createElement("img");
+                        img.src = result.imageUrl;
+                        img.style.maxWidth = "100%";
+                        postDiv.appendChild(img);
+                    }
+
+                    document.getElementById("posts").prepend(postDiv);
+
+                    // Clear inputs
+                    document.getElementById("title").value = "";
+                    document.getElementById("domain").value = "";
+                    document.getElementById("content").value = "";
+                    document.getElementById("image").value = "";
+                    document.getElementById("preview").innerHTML = "";
+                } else {
+                    throw new Error("Failed to post blog");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Error posting blog. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>

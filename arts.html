@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arts & Culture </title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image:url("https://i.pinimg.com/474x/b5/51/05/b5510541d117e21d96e7af34969da7da.jpg");
+           background-repeat: no-repeat;
+           background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color:black;
+        }
+
+        h1 {
+            color: rgb(80, 36, 9);
+            font-size: 3.5em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: black;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .review-section {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .review-section p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .review-section strong {
+            color: #2c3e50;
+        }
+
+        .upload-section {
+            margin-top: 30px;
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .upload-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .upload-inputs input[type="file"], .upload-inputs textarea {
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            width: 100%;
+            background-color: #fafafa;
+            margin-bottom: 15px;
+        }
+
+        .upload-inputs textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .upload-button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .upload-button:hover {
+            background-color: #2ecc71;
+        }
+
+        .back-button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color:grey;
+        }
+
+        .popular-feed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            
+        }
+
+        .popular-feed img {
+            width: 350px;
+            height:160px;
+            height: auto;
+            border-radius: 100px;
+            max-width: 45%;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .popular-feed p {
+            font-size: 1.2em;
+            color: black;
+            font-style:bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .popular-feed img {
+                max-width: 100%;
+            }
+
+            .upload-inputs input[type="file"], .upload-inputs textarea {
+                font-size: 14px;
+            }
+        }
+    </style> 
+</head>
+<body>
+    <h1>Arts and Culture</h1>
+
+    <div class="content-container">
+        <h2>Popular Arts & Culture Feeds</h2>
+       
+        <div class="popular-feed">
+            <div>
+                <img src="https://th.bing.com/th/id/R.492b9d629722d35686f17b108763684a?rik=WHoIVmVrUQHFLQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-NjUJm1Emkjg%2fUtIxA_V6ppI%2fAAAAAAAAECM%2fg78Fwl9JOvI%2fs1600%2f2.jpg&ehk=3pSFW%2flADPJ9f%2bW4dswVMILB9HV09Bh%2fHQBBEebNeso%3d&risl=&pid=ImgRaw&r=0">
+                <p>Explore the rich heritage of art exhibitions around the world.
+                Experience the beauty of modern art and its many forms.</p>
+            </div>
+        </div>
+
+        <div class="review-section">
+            <h2>Reviews:</h2>
+            <p><strong>Tamilselvi:</strong> "The arts and culture events around the world are truly inspiring! I recently attended a modern art exhibition and it was mind-blowing."</p>
+            <p><strong>Ezhil:</strong> "Cultural diversity is at the heart of our global community. I always enjoy learning about different art forms from various regions."</p>
+        </div>
+
+        <div class="upload-section">
+            <h2>Upload Your Contribution</h2>
+            <div class="upload-inputs">
+                <label for="uploadImage">Upload an Image:</label>
+                <input type="file" id="uploadImage" accept="image/*">
+
+                <label for="uploadVideo">Upload a Video:</label>
+                <input type="file" id="uploadVideo" accept="video/*">
+
+                <label for="uploadReview">Upload a Review:</label>
+                <textarea id="uploadReview" placeholder="Write your review here..."></textarea>
+
+                <button class="upload-button" onclick="uploadContent()">Upload Content</button>
+            </div>
+        </div>
+
+        <button class="back-button" onclick="goBack()">Back to Home</button>
+    </div>
+
+    <script>
+        function uploadContent() {
+            // Logic for uploading content can go here (for demo purposes we will just show an alert)
+            alert("Content uploaded successfully!");
+        }
+
+        function goBack() {
+            window.location.href = "title.html";  // Go back to the homepage
+        }
+    </script>
+     
+    <script>
+        const blogDisplay= document.querySelector('.upload-section')
+        const blogList=fetch('http://localhost:3000/blogs')
+        .then(response => response.json()) // Convert response to JSON
+        .then(data => {
+            blogDisplay.innerHTML = data.map(blog => `
+                <div class="blog-post">
+                    <h3>${blog.title}</h3>
+                    <p>${blog.content}</p>
+                </div>
+            `).join('');
+        }) // Log the actual data
+        .catch(error => console.error('Error fetching blogs:', error));
+        
+       </script>
+</body>
+</html>

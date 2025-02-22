@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url("https://southasianart.gallery/cdn/shop/products/002_1cb87650-89a6-41bd-98d0-7b476b3bca73.jpg?v=1571714314");
+    
+    background-size: 900px 700px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    background: transparent;
+    padding: 40px; /* Increased padding to make the box bigger */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Slightly increased the shadow */
+    text-align: center;
+    max-width: 800px; /* Increased max-width to make the container larger */
+    width: 90%; /* Ensures responsiveness */
+}
+
+        h1 {
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: 100px;
+            font-weight: bold;
+            color:white;
+        }
+    
+
+
+select {
+    width: 80%;
+    padding: 12px; /* Increased padding for better spacing */
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px; /* Adjust font size */
+}
+
+button {
+    padding: 15px 30px; /* Increased padding for larger buttons */
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: maroon; /* Set background color to maroon */
+    color: white;
+    font-size: 18px; /* Increased font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: darkred; /* Darker maroon color on hover */
+}
+

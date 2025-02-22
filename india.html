@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map with Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol@0.72.0/dist/leaflet-locatecontrol.css" />
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.locatecontrol@0.72.0/dist/leaflet-locatecontrol.js"></script>
+
+    <script>
+        // Initialize the map and set its view to India
+        var map = L.map('map', {
+            crs: L.CRS.EPSG3857, // Standard map projection
+            zoomControl: false // Optional: Disable default zoom controls
+        }).setView([20.5937, 78.9629], 5); // Coordinates of India
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Restrict the map view to India (latitude and longitude bounds for India)
+        var indiaBounds = [[6.5, 68.1], [37.5, 97.4]]; // Latitude and longitude bounds for India
+        map.setMaxBounds(indiaBounds); // Set map bounds to India only
+        map.setMinZoom(5); // Optional: Set minimum zoom to prevent zooming out too much
+
+        // Coordinates for Sathyamangalam, Tamil Nadu
+        var sathyamangalamCoordinates = [11.4333, 77.3667]; // Approximate lat-lng for Sathyamangalam
+
+        // Create a custom icon for the Sathyamangalam marker
+        var customIcon = L.icon({
+            iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Map_pin_icon.svg', // Use a custom map pin icon
+            iconSize: [32, 32], // Size of the icon
+            iconAnchor: [16, 32], // Anchor point of the icon
+            popupAnchor: [0, -32] // Adjust the popup position relative to the icon
+        });
+
+        // Add a marker for Sathyamangalam with the custom icon
+        var marker = L.marker(sathyamangalamCoordinates, { icon: customIcon }).addTo(map);
+
+        // Add a popup to the marker for Sathyamangalam
+        marker.bindPopup("<b>Sathyamangalam</b><br>Tamil Nadu").openPopup();
+
+        // Add Locate control to show the user's location on the map
+        var locateControl = L.control.locate({
+            position: 'topright', // Position of the locate control button
+            icon: 'fa fa-location-arrow', // Use default icon, you can customize it
+            setView: true, // Set view to the user's location
+            follow: true, // Follow the user's location
+            onLocationError: function(err) {
+                alert("Unable to find location: " + err.message);
+            }
+        }).addTo(map);
+
+        // Optional: You can zoom into Sathyamangalam when the page loads
+        map.setView(sathyamangalamCoordinates, 10); // Zoom into Sathyamangalam location
+    </script>
+    <div class="button-group">
+        
+        <a href="tamil_nadu_erode_sathyamangalam.html"><button>YES
+        </button></a> 
+        <a href="select city.html"><button>NO
+        </button></a> 
+    </div>
+
+</body>
+</html>

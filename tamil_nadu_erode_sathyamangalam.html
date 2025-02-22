@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sathyamangalam</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVmWIy2eci0-hzEfqvxQr0yRF3cW-SFifHkA&s");
+            background-size: 1500px 2200px; /* Ensures the image covers the entire background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; 
+        
+        }
+        .title{
+            font-size: 40px;
+            font-weight: bold;
+            color:#333;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            background: transparent;
+            padding: 50px 90px;
+            border-radius: 70px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 20px;
+        }
+        .sidebar button {
+            background: #d3d3d3;
+            border: none;
+            padding: 15px;
+            border-radius:50px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .content {
+            flex: 1;
+        }
+        .content h2 {
+            text-align: center;
+            background: #d3d3d3;
+            padding: 10px;
+            border-radius: 50px;
+            font-weight: bold;
+        ;
+        }
+        .image-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #d3d3d3;
+            border-radius: 50px;
+            margin: 10px 0;
+            text-align: center;
+            
+        }
+        .dropdown-container {
+            margin-top: 20px;
+        }
+        select {
+            padding: 10px;
+            font-size: 20px;
+            width: 200px;
+            border-radius: 5px;
+            border: 2px solid #f2e9e9;
+            background-color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .write-post-btn {
+            margin-top: 150px;
+            background-color: #aa6000;
+            color: white;
+            border: none;
+            padding: 26px 40px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-size: 20px;
+            width:250px;
+           
+        }
+        .write-post-btn:hover {
+            background-color: green;
+        }
+        .write-post-btn:before {
+            content: '✏️';
+            margin-right: 10px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <a href="food.html"><button>FOOD</button></a> 
+            <a href="arts.html"><button>ARTS AND CULTURE</button></a> 
+          
+            <a href="culture.html"><button>LANGUAGE</button></a>
+        </aside>
+        <main class="content">
+            <h2>GLIMPSES OF SATHYAMANGALAM</h2>
+           
+            <div class="image-placeholder">
+                <img src="https://via.placeholder.com/400x300?text=Language+Learning" alt="Blog Image" style="max-width:100%; height:auto;">
+            </div>
+
+            <!-- Write a Post Button -->
+            <a href="post.html">
+            <button class="write-post-btn">Add to kuduvai</button>
+           </a>     
+        </main>
+        
+    <script>
+        const blogDisplay= document.querySelector('.image-placeholder');
+        const blogList=fetch('http://localhost:3000/blogs')
+        .then(response => response.json()) // Convert response to JSON
+        .then(data => {
+            blogDisplay.innerHTML = data.map(blog => `
+                <div class="blog-post">
+                    <h3>${blog.title}</h3>
+                    <p>${blog.content}</p>
+                    ${blog.image ? `<img src="${blog.image}" alt="Blog Image" style="max-width:100%; height:auto;">` : ''}
+                </div>
+            `).join('');
+        }) // Log the actual data
+        .catch(error => console.error('Error fetching blogs:', error));
+        
+       </script>
+
+   
+</body>
+</html>

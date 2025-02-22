@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian States & Cities</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Select Your State, District & City</h2>
+    
+        
+
+        <label for="state">Select State:</label>
+        <select id="state" onchange="loadDistricts()">
+            <option value="">-- Select State --</option>
+        </select>
+
+        <label for="district">Select District:</label>
+        <select id="district" onchange="loadCities()" disabled>
+            <option value="">-- Select District --</option>
+        </select>
+
+        <label for="city">Select City:</label>
+        <select id="city" onchange="goToCityPage()" disabled>
+            <option value="">-- Select City --</option>
+        </select>
+
+        
+          
+
+    <script src="script.js"></script>
+</div>
+
+<a href="india.html"><button>Submit
+</button></a> 
+</body>
+</html>
+

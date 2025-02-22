@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Domain</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image:url("https://th-i.thgim.com/public/news/national/tamil-nadu/2d6egh/article69049330.ece/alternates/LANDSCAPE_1200/WhatsApp%20Image%202025-01-01%20at%2012.38.57.jpeg");
+
+            margin: 0;
+            padding: 20px;
+            color: black;
+        }
+
+        h1 {
+            color: rgb(80, 36, 9);
+            font-size: 3.5em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content-container {
+            background-color: whitesmoke ;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            color:black;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .review-section {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .review-section p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .review-section strong {
+            color: #2c3e50;
+        }
+
+        .upload-section {
+            margin-top: 30px;
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .upload-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .upload-inputs input[type="file"], .upload-inputs textarea {
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            width: 100%;
+            background-color: #fafafa;
+            margin-bottom: 15px;
+        }
+
+        .upload-inputs textarea {
+            height: 120px;
+            resize: vertical;
+            color:white;
+        }
+
+        .upload-button {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .upload-button:hover {
+            background-color: #2ecc71;
+        }
+
+        .back-button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: grey;
+        }
+
+        .popular-feed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            color:white;
+        }
+
+        .popular-feed img {
+            width: 200px;
+            height: 200px;
+            border-radius: 150px;
+            max-width: 70%;
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+            color: white;;
+        }
+
+        .popular-feed p {
+            font-size: 1.2em;
+            color: black;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .popular-feed img {
+                max-width: 100%;
+            }
+
+            .upload-inputs input[type="file"], .upload-inputs textarea {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Culinary practices</h1>
+
+    <div class="content-container">
+        <h2>Popular Food Feeds</h2>
+       
+        <div class="popular-feed">
+            <div>
+                <img src="https://i.pinimg.com/originals/89/98/53/899853da890b9c13fb0db4be1ab30629.jpg">
+            
+                <img src="https://i.ytimg.com/vi/ZTOZpA3bi70/maxresdefault.jpg" >
+                <p>Experience food that is sure to excite your taste buds! Discover delicious dishes from different cuisines around the world.
+            </p>
+            </div>
+        </div>
+
+       
+
+        <div class="upload-section">
+            <h2>Upload Your kuduvai</h2>
+            <div class="upload-inputs">
+                <label for="uploadImage">Image:</label>
+                <input type="file" id="uploadImage" accept="image/*">
+
+                <label for="uploadVideo">Video:</label>
+                <input type="file" id="uploadVideo" accept="video/*">
+
+                <label for="uploadReview"></label>
+                <textarea id="uploadReview" placeholder="The karuthu what I am saying...."></textarea>
+
+                <button class="upload-button" onclick="uploadContent()">Upload Kuduvai</button>
+            </div>
+        </div>
+
+        <button class="back-button" onclick="goBack()">Back to Home</button>
+    </div>
+
+    <script>
+        function uploadContent() {
+            // Logic for uploading content can go here (for demo purposes we will just show an alert)
+            alert("Content uploaded successfully!");
+        }
+
+        function goBack() {
+            window.location.href = "title.html";  // Go back to the homepage
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,54 @@
+<style>
+            body{
+                margin:0;
+                padding:0;
+                background-image: url("https://cdn.wrytin.com/images/wrytup/r/1024/800px-colourbox11294369-jqp7np1g.jpeg"); 
+                background-size: cover;
+                background-position: center; 
+                background-repeat: no-repeat; 
+                height: 100vh;
+                margin: 0; 
+            
+            }
+            .container{
+                top:50%;
+                left:50%;
+                position: absolute;
+                transform:translate(-50%,-50%);
+            }
+            .card{
+                padding:50px 50px 50px 50px;
+                background:white;
+                border-radius:10px;
+            }
+            #name{
+                width:400px;
+                border:none;
+                background:transparent;
+                border-bottom:50px solid black;
+                padding:40px;
+                margin-bottom:70px;
+                color:white;
+               
+            }
+            #button{
+                border-radius:20px;
+                padding:40px 80px;
+                background:dodgerblue;
+                color:white;
+                margin-top:50px;
+                border:none;
+                outline:none;
+                margin-left:50px;
+            }
+            a{
+                font-size:13px;
+            }
+            img{
+                border-radius: 50%;
+                position:absolute;
+                margin-left:100px;
+                margin-top:-50px;
+
+            }
+        </style>
